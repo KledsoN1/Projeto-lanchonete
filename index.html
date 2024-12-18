@@ -127,18 +127,23 @@
     }
 
     function pesquisarPedido() {
-      let nome = prompt("Digite o nome para pesquisar na fila:");
-      if (nome) {
-        let posicao = filaPedidos.indexOf(nome);
-        if (posicao !== -1) {
-          document.getElementById("mensagem").textContent = `O pedido de ${nome} está na posição ${posicao + 1}.`;
-        } else {
-          document.getElementById("mensagem").textContent = `Pedido de ${nome} não encontrado na fila.`;
-        }
-      } else {
-        document.getElementById("mensagem").textContent = "Nenhum nome foi digitado para pesquisa.";
-      }
+  if (filaPedidos.length === 0) {
+    document.getElementById("mensagem").textContent = "A pesquisa não pode ser realizada. Nenhum pedido na fila.";
+    return;
+  }
+  
+  let nome = prompt("Digite o nome para pesquisar na fila:");
+  if (nome) {
+    let posicao = filaPedidos.indexOf(nome);
+    if (posicao !== -1) {
+      document.getElementById("mensagem").textContent = `O pedido de ${nome} está na posição ${posicao + 1}.`;
+    } else {
+      document.getElementById("mensagem").textContent = `Pedido de ${nome} não encontrado na fila.`;
     }
+  } else {
+    document.getElementById("mensagem").textContent = "Nenhum nome foi digitado para pesquisa.";
+  }
+}
 
     function encerrarSistema() {
       if (filaPedidos.length > 0) {
